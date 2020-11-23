@@ -1,0 +1,43 @@
+.sudoku-grill-wrapper{
+  width: 80%;
+  height: auto;
+  border: 1px solid red;
+  margin: auto;
+}
+.heading h2{
+  text-align: center;
+}
+.button{
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  width: 200px;
+}
+.button button{
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.button button:hover{
+  cursor: pointer;
+  border: 2px solid #47625f;
+  color:#47625f;
+}
+
+
+table {
+  margin:1em auto;
+}
+td {
+  height:30px;
+  width:30px;
+  border:1px solid;
+  text-align:center;
+}
+
+@media screen and (max-width: 480px) {
+  .sudoku-grill-wrapper{
+  width: 100%;
+  }
+}
