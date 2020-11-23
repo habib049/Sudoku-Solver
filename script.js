@@ -117,7 +117,7 @@ window.addEventListener('load', (event) => {
             i++;
             show_results(i)
 
-        }, 100);
+        }, 800);
 
 
     }
