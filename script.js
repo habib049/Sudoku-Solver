@@ -1,4 +1,5 @@
 window.addEventListener('load', (event) => {
+
     let table = document.getElementById('sudoku-grill');
     let temp_board = [[], [], [], [], [], [], [], [], []]
     let board = [[], [], [], [], [], [], [], [], []]
@@ -30,7 +31,10 @@ window.addEventListener('load', (event) => {
         for (let i = 0; i < 10; i++) {
             if (check_validity(i, empty)) {
                 board[empty[0]][empty[1]] = i;
-                data_object.push({'x': empty[0], 'y': empty[1], 'exact_number': i})
+                data_object.push({
+                    'x': empty[0], 'y': empty[1],
+                    'exact_number': i
+                });
                 if (solve()) {
                     return true
                 }
@@ -103,32 +107,32 @@ window.addEventListener('load', (event) => {
         document.getElementById("reset").disabled = false;
     }
 
+
     let i = 0;
     let interval;
 
     function solution() {
+        disable_buttons();
         getCellValues();
-
         solve();
-        interval = setInterval(function () {
+        show_results_wrapper();
 
+    }
+
+    function show_results_wrapper() {
+        interval = setInterval(function () {
             table.rows[data_object[i].x].cells[data_object[i].y].style.border = "none";
             table.rows[data_object[i].x].cells[data_object[i].y].style.backgroundColor = "#478a6a";
             i++;
             show_results(i)
 
-        }, 800);
-
-
+        }, 500);
     }
-
-    let new_interval;
-    let array_size = 0;
-    let array_count = 0;
 
     function show_results(i) {
         if (i === data_object.length) {
             clearInterval(interval);
+            enable_buttons();
         } else {
             table.rows[data_object[i].x].cells[data_object[i].y].innerHTML = data_object[i].exact_number.toString();
             table.rows[data_object[i].x].cells[data_object[i].y].style.backgroundColor = "red";
